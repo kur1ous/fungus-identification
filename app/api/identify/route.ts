@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       .jpeg({ quality: 85 })
       .toBuffer();
 
-    const blob = new Blob([jpegBuffer], { type: "image/jpeg" });
+    const blob = new Blob([new Uint8Array(jpegBuffer)], { type: "image/jpeg" });
     const upstream = new FormData();
     upstream.append("image", blob, "upload.jpg");
 
